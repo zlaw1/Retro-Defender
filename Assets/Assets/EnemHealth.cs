@@ -7,7 +7,8 @@ public class EnemHealth : MonoBehaviour
 {
     public int maxHealth = 100;
     int currentHealth;
-    public 
+
+    private int scoreValue = 10;
 
 
 
@@ -19,6 +20,10 @@ public class EnemHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        if(currentHealth <= 0)Destroy(gameObject);
+        if(currentHealth <= 0)
+        {
+             GameObject.Find("character").GetComponent<PlayHealth>().AddScore(scoreValue);
+            Destroy(gameObject);
+        }
     }
 }
